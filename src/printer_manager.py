@@ -27,6 +27,7 @@ class PrinterManager(object):
 
         self._download_printer_config(ptr)
         self._print_ip_address(ptr)
+        ptr.text("--")
         ptr.cut()
         ptr.close()
         return self.ready
@@ -65,6 +66,8 @@ class PrinterManager(object):
             ptr.text("http://" + address + "/printreceipt")
         except OSError:
             pass
+        finally:
+            ptr.text("\n")
 
     def print(self, vehicle):
         """Print receipt for vehicle"""
