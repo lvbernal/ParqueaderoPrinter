@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Printer controller"""
 
+import socket
 import urllib.request
 import json
 from escpos import printer
@@ -25,14 +26,17 @@ class PrinterManager(object):
             return False
 
         self._download_printer_config(ptr)
+        self._print_ip_address(ptr)
         ptr.cut()
         ptr.close()
         return self.ready
 
     def _download_printer_config(self, ptr):
         try:
-            ptr.set(align='left', width=1, height=1)
+            ptr.set(align='center', width=1, height=1)
             ptr.text(config.LOADING_CONFIG + "\n")
+            ptr.set(align='left', width=1, height=1)
+            ptr.text(config.CONFIGURING + "\n")
 
             with urllib.request.urlopen(config.CONFIG_URL) as url:
                 response = json.loads(url.read().decode())
@@ -43,7 +47,7 @@ class PrinterManager(object):
                 self.contract = contract if contract is not None else ""
                 self.ready = True
 
-            ptr.text(config.CONFIG_READY + "\n")
+            ptr.text(config.CONFIG_READY)
 
         except urllib.error.HTTPError:
             ptr.text(config.ERROR_BAD_ID)
@@ -51,6 +55,16 @@ class PrinterManager(object):
             ptr.text(config.ERROR_BAD_URL)
         finally:
             ptr.text("\n")
+
+    def _print_ip_address(self, ptr):
+        try:
+            skt = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            skt.connect(("8.8.8.8", 80))
+            address = skt.getsockname()[0]
+            skt.close()
+            ptr.text("http://" + address + "/printreceipt")
+        except OSError:
+            pass
 
     def print(self, vehicle):
         """Print receipt for vehicle"""

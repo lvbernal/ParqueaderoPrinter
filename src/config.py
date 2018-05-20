@@ -28,8 +28,9 @@ TRUCK = "CAMION"
 MOTORBIKE = "MOTO"
 BIKE = "BICICLETA"
 
-LOADING_CONFIG = "ParqueaderoApp. Configurando..."
-CONFIG_READY = "Impresora lista."
+LOADING_CONFIG = "ParqueaderoApp"
+CONFIGURING = "Configurando..."
+CONFIG_READY = "Impresora lista en"
 ERROR_BAD_ID = "Error: El Id del parqueadero no es valido."
 ERROR_BAD_URL = "Error: La url del servidor no es valida o no hay acceso a internet."
 
