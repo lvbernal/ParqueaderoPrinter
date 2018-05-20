@@ -2,7 +2,10 @@
 """Printer configuration file"""
 
 # ----- Local ----- #
-PARKING_LOT_ID = "1"
+SERVER_URL = ""
+PARKING_LOT_ID = ""
+CODE = ""
+
 ID_VENDOR = 0x0fe6
 ID_PRODUCT = 0x811e
 IN_EP = 0x82
@@ -31,6 +34,5 @@ ERROR_BAD_ID = "Error: El Id del parqueadero no es valido."
 ERROR_BAD_URL = "Error: La url del servidor no es valida o no hay acceso a internet."
 
 # ----- Fixed variables ----- #
-BASE_CONFIG_URL = ""
-CONFIG_URL = BASE_CONFIG_URL + PARKING_LOT_ID
+CONFIG_URL = SERVER_URL + PARKING_LOT_ID
 DATE_FORMAT = "%d-%m-%Y %I:%M:%S %p"
