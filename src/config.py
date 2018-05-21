@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
 """Printer configuration file"""
 
+import texts
+
 # ----- Local ----- #
-SERVER_URL = ""
 PARKING_LOT_ID = ""
 CODE = ""
+LANG = "ES"
+
+# ----- Printer ----- #
 
 ID_VENDOR = 0x0fe6
 ID_PRODUCT = 0x811e
@@ -13,27 +17,44 @@ OUT_EP = 0x02
 
 # ----- Application texts ----- #
 
-# Should have the same length
-CI_TEXT = "Ingreso: "
-CO_TEXT = "Salida:  "
+if LANG == "ES":
+    CI_TEXT = texts.CI_TEXT_ES
+    CO_TEXT = texts.CO_TEXT_ES
+    HELMETS_TEXT = texts.HELMETS_TEXT_ES
+    BASE_TEXT = texts.BASE_TEXT_ES
+    HOURS_TEXT = texts.HOURS_TEXT_ES
+    HOURS_HELMETS_TEXT = texts.HOURS_HELMETS_TEXT_ES
+    CAR = texts.CAR_ES
+    PICKUP = texts.PICKUP_ES
+    TRUCK = texts.TRUCK_ES
+    MOTORBIKE = texts.MOTORBIKE_ES
+    BIKE = texts.BIKE_ES
+    LOADING_CONFIG = texts.LOADING_CONFIG_ES
+    CONFIGURING = texts.CONFIGURING_ES
+    CONFIG_READY = texts.CONFIG_READY_ES
+    ERROR_BAD_ID = texts.ERROR_BAD_ID_ES
+    ERROR_BAD_URL = texts.ERROR_BAD_URL_ES
+    DATE_FORMAT = texts.DATE_FORMAT_ES
+elif LANG == "EN":
+    CI_TEXT = texts.CI_TEXT_EN
+    CO_TEXT = texts.CO_TEXT_EN
+    HELMETS_TEXT = texts.HELMETS_TEXT_EN
+    BASE_TEXT = texts.BASE_TEXT_EN
+    HOURS_TEXT = texts.HOURS_TEXT_EN
+    HOURS_HELMETS_TEXT = texts.HOURS_HELMETS_TEXT_EN
+    CAR = texts.CAR_EN
+    PICKUP = texts.PICKUP_EN
+    TRUCK = texts.TRUCK_EN
+    MOTORBIKE = texts.MOTORBIKE_EN
+    BIKE = texts.BIKE_EN
+    LOADING_CONFIG = texts.LOADING_CONFIG_EN
+    CONFIGURING = texts.CONFIGURING_EN
+    CONFIG_READY = texts.CONFIG_READY_EN
+    ERROR_BAD_ID = texts.ERROR_BAD_ID_EN
+    ERROR_BAD_URL = texts.ERROR_BAD_URL_EN
+    DATE_FORMAT = texts.DATE_FORMAT_EN
 
-HELMETS_TEXT = "Cascos"
-BASE_TEXT = "Base"
-HOURS_TEXT = "Hora adicional"
-HOURS_HELMETS_TEXT = "Hora adicional cascos"
+# ----- Fixed config ----- #
 
-CAR = "CARRO"
-PICKUP = "CAMIONETA"
-TRUCK = "CAMION"
-MOTORBIKE = "MOTO"
-BIKE = "BICICLETA"
-
-LOADING_CONFIG = "ParqueaderoApp"
-CONFIGURING = "Configurando..."
-CONFIG_READY = "Impresora lista en"
-ERROR_BAD_ID = "Error: El Id del parqueadero no es valido."
-ERROR_BAD_URL = "Error: La url del servidor no es valida o no hay acceso a internet."
-
-# ----- Fixed variables ----- #
+SERVER_URL = ""
 CONFIG_URL = SERVER_URL + PARKING_LOT_ID
-DATE_FORMAT = "%d-%m-%Y %I:%M:%S %p"
