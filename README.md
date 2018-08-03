@@ -15,7 +15,7 @@ Install dependencies:
 
 ``` sh
 # libusb should be installed in the OS.
-$ pip3 install python-escpos cherrypy python-dateutil libusb
+$ pip3 install six>=1.11.0 cheroot portend cherrypy libusb python-escpos python-dateutil
 ```
 
 Get the printer settings:
