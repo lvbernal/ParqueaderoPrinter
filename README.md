@@ -70,7 +70,7 @@ Expected input in the /printreceipt endpoint:
 {
     "plate": "ABC123",
     "vehicle_type": "pickup",
-    "check_in": "2018-03-27T20:11:42.9947971",
+    "check_in": "2018-03-27T10:11:42.9947971",
     "check_out": "0001-01-01T00:00:00",
     "helmets": 2,
     "done": 0,
@@ -89,8 +89,8 @@ Expected input in the /printreceipt endpoint:
 {
     "plate": "ABC123",
     "vehicle_type": "pickup",
-    "check_in": "2018-03-27T20:11:42.9947971",
-    "check_out": "0001-01-01T00:00:00",
+    "check_in": "2018-03-27T10:11:42.9947971",
+    "check_out": "2018-03-27T13:01:40.9947971",
     "helmets": 2,
     "done": 1,
     "fee": 5000.0,
@@ -101,4 +101,20 @@ Expected input in the /printreceipt endpoint:
         "helmetsTotal": 1000
     }
 }
+```
+
+_Datetime values in UTC._
+
+## Start with the system
+
+Run:
+
+```sh
+$ sudo crontab -e
+```
+
+And add:
+
+```
+@reboot /usr/bin/python3 /<full path>/run.py
 ```
