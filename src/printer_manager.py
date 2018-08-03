@@ -93,6 +93,9 @@ class PrinterManager(object):
             ptr.text("\n\n")
             self._print_contract(ptr)
 
+        ptr.text("\n\n")
+        self._print_footer(ptr)
+
         ptr.cut()
         ptr.close()
         return True
@@ -163,6 +166,10 @@ class PrinterManager(object):
     def _print_contract(self, ptr):
         ptr.set(align='left')
         ptr.text(self.contract)
+
+    def _print_footer(self, ptr):
+        ptr.set(align='center')
+        ptr.text("www.parqueaderoapp.com")
 
     def get_printer(self):
         """Create printer instance from configuration"""
