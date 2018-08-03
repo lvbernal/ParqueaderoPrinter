@@ -14,8 +14,13 @@ $ source env/bin/activate
 Install dependencies:
 
 ``` sh
-# libusb should be installed in the OS.
 $ pip3 install six cheroot portend cherrypy libusb python-escpos python-dateutil
+```
+
+Depending on the platform, you would need:
+
+```sh
+$ sudo apt-get install libopenjp2-7 libtiff5
 ```
 
 Get the printer settings:
